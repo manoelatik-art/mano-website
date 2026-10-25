@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080810">
+<meta name="description" content="MANO HELL — مساحة رقمية إبداعية من عالم البرمجة والتصميم.">
+<title>MANO HELL | Enter My World</title>
+
+<style>
+:root {
+  --bg: #080810;
+  --panel: #11111d;
+  --red: #ff3155;
+  --purple: #9b5cff;
+  --text: #f6f3ff;
+  --muted: #a5a2b7;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.container { width: min(1100px, 90%); margin: auto; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,8,16,.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #ffffff12;
+}
+nav {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.logo span { color: var(--red); }
+.navlinks { display: flex; gap: 22px; }
+.navlinks a { color: var(--muted); font-size: 14px; }
+.navlinks a:hover { color: white; }
+.menu {
+  background: var(--panel);
+  color: white;
+  border: 1px solid #ffffff20;
+  border-radius: 9px;
+  padding: 9px 12px;
+  display: none;
+}
+
+.hero {
+  min-height: 82vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 85px 0;
+}
+.glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: var(--purple);
+  opacity: .16;
+  filter: blur(100px);
+  border-radius: 50%;
+  top: 12%;
+  left: 10%;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.tag {
+  display: inline-block;
+  border: 1px solid #ff315555;
+  color: #ff8ca0;
+  background: #ff315510;
+  padding: 9px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+}
+h1 {
+  font-size: clamp(48px, 12vw, 100px);
+  line-height: 1;
+  letter-spacing: -3px;
+  margin: 28px 0 18px;
+  font-weight: 900;
+}
+h1 span {
+  color: var(--red);
+  text-shadow: 0 0 40px #ff315533;
+}
+.hero p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.9;
+  max-width: 540px;
+  margin: 0 auto 28px;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 11px;
+  border: 1px solid #ffffff20;
+  background: var(--panel);
+  color: white;
+  transition: .2s;
+}
+.btn.primary {
+  border: none;
+  background: linear-gradient(110deg,var(--red),#a52bff);
+  font-weight: bold;
+}
+.btn:hover { transform: translateY(-3px); }
+
+.section { padding: 75px 0; }
+.section-head { margin-bottom: 30px; }
+.eyebrow {
+  color: var(--red);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+h2 { font-size: clamp(28px,6vw,42px); margin: 12px 0; }
+.sub { color: var(--muted); line-height: 1.9; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 18px;
+}
+.card {
+  padding: 25px;
+  border: 1px solid #ffffff12;
+  background: linear-gradient(145deg,#151522,#0c0c15);
+  border-radius: 18px;
+  transition: .25s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #ff315566;
+}
+.card .icon { font-size: 30px; }
+.card h3 { margin: 18px 0 10px; }
+.card p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+.chip {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: #ffffff0b;
+  color: #c9b4ff;
+  font-size: 11px;
+  margin: 3px;
+}
+.about-box {
+  padding: 30px;
+  border: 1px solid #ffffff15;
+  background: var(--panel);
+  border-radius: 20px;
+}
+.about-box p { line-height: 2; color: var(--muted); }
+
+.contact {
+  text-align: center;
+  border: 1px solid #ff315533;
+  background: radial-gradient(ellipse at top,#321326,#10101a 65%);
+  border-radius: 24px;
+  padding: 45px 22px;
+}
+.contact p { color: var(--muted); line-height: 1.9; }
+
+footer {
+  padding: 26px 0;
+  margin-top: 60px;
+  border-top: 1px solid #ffffff12;
+  color: var(--muted);
+  font-size: 13px;
+}
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+#topBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 18px;
+  width: 43px;
+  height: 43px;
+  border: 1px solid #ffffff25;
+  background: #181421;
+  color: white;
+  border-radius: 12px;
+  display: none;
+  z-index: 5;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s, transform .65s;
+}
+.reveal.show { opacity: 1; transform: none; }
+
+@media(max-width:700px) {
+  .menu { display: block; }
+  .navlinks {
+    display: none;
+    position: absolute;
+    top: 72px;
+    right: 5%;
+    left: 5%;
+    padding: 20px;
+    border: 1px solid #ffffff18;
+    background: #11111d;
+    border-radius: 14px;
+    flex-direction: column;
+  }
+  .navlinks.open { display: flex; }
+  .cards { grid-template-columns: 1fr; }
+  .hero { min-height: 76vh; }
+  h1 { letter-spacing: -2px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#home">MANO<span>.</span></a>
+      <button class="menu" id="menuBtn" aria-label="فتح القائمة"
+        aria-expanded="false">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#home">الرئيسية</a>
+        <a href="#projects">المشاريع</a>
+        <a href="#about">عني</a>
+        <a href="#contact">التواصل</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="glow"></div>
+    <div class="container hero-content">
+      <span class="tag">WELCOME TO MY DIGITAL WORLD</span>
+      <h1>MANO <span>HELL</span></h1>
+      <p>
+        عالم من الأفكار والإبداع والتكنولوجيا.
+        دي البداية، ولسه الرحلة في أولها.
+        كل سطر كود هو خطوة ناحية حلم أكبر.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">اكتشف عالمي ↙</a>
+        <a class="btn" href="#about">اعرف أكتر</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">WHAT I'M BUILDING</span>
+        <h2>من هنا بتبدأ الحكاية.</h2>
+        <p class="sub">أفكار ومشاريع هتتطور مع كل تجربة جديدة.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="icon">💻</div>
+          <h3>Web Development</h3>
+          <p>بناء مواقع عصرية وسريعة، بتصميم مناسب للموبايل والكمبيوتر.</p>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">🎨</div>
+          <h3>Creative Design</h3>
+          <p>تجربة أفكار بصرية وألوان وتفاصيل تخلي كل مشروع له شخصية.</p>
+          <span class="chip">UI Design</span>
+          <span class="chip">Creativity</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">🚀</div>
+          <h3>Future Projects</h3>
+          <p>الموقع ده هو أول خطوة في رحلة تعلم البرمجة وبناء مشاريع حقيقية.</p>
+          <span class="chip">Learning</span>
+          <span class="chip">Building</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">ABOUT THIS WORLD</span>
+        <h2>مش مجرد صفحة.</h2>
+      </div>
+      <div class="about-box reveal">
+        <p>
+          أنا MANO، وده أول موقع ببدأ بيه رحلتي في عالم الويب.
+          الهدف إني أتعلم، أبني مشاريع، وأطور أفكاري خطوة بخطوة.
+          الموقع ده قابل للتطوير، وكل تحديث فيه بداية لحاجة جديدة.
+        </p>
+        <span class="chip">Think</span>
+        <span class="chip">Create</span>
+        <span class="chip">Improve</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact reveal">
+        <span class="eyebrow">LET'S CONNECT</span>
+        <h2>لسه البداية 🚀</h2>
+        <p>تابع الكود والمشاريع اللي بشتغل عليها على GitHub.</p>
+        <a class="btn primary"
+          href="https://github.com/manoelatik-art"
+          target="_blank" rel="noopener noreferrer">
+          Visit My GitHub ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© <span id="year"></span> MANO HELL</span>
+    <span>Built with passion ♡</span>
+  </div>
+</footer>
+
+<button id="topBtn" aria-label="العودة للأعلى">↑</button>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navlinks = document.getElementById("navlinks");
+
+menuBtn.addEventListener("click", () => {
+  const opened = navlinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(opened));
+});
+
+navlinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navlinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
